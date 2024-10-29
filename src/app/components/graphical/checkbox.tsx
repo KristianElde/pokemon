@@ -1,6 +1,5 @@
 "use client";
 
-import { useContext } from "react";
 import { useHiddenColumns } from "../../functions/useHiddenColumns";
 
 interface props {

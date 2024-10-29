@@ -2,8 +2,7 @@
 
 import Checkbox from "./components/graphical/checkbox";
 import PokemonTableRow from "./components/graphical/pokemonTableRow";
-import { getPokemonObjects, type Pokemon } from "./functions/data-fetching";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import {
   PokemonDataContext,
   SelectedPokemonContext,
