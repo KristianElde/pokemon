@@ -1,27 +1,20 @@
 "use client";
 
-import Checkbox from "./components/checkbox";
-import PokemonTableRow from "./components/pokemonTableRow";
+import Checkbox from "./components/graphical/checkbox";
+import PokemonTableRow from "./components/graphical/pokemonTableRow";
 import { getPokemonObjects, type Pokemon } from "./functions/data-fetching";
 import { useContext, useEffect, useState } from "react";
-import { ColsContext, SelectedPokemonContext } from "./Providers";
-import SelectedPokemon from "./components/selectedPokemon";
+import {
+  PokemonDataContext,
+  SelectedPokemonContext,
+} from "./components/functional/Providers";
+import SelectedPokemon from "./components/graphical/selectedPokemon";
+import { useHiddenColumns } from "./functions/useHiddenColumns";
 
 export default function Home() {
-  const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
-  const hiddenColumns = useContext(ColsContext).hiddenColumns;
-  const { selectedPokemon, setSelectedPokemon } = useContext(
-    SelectedPokemonContext
-  );
-
-  useEffect(() => {
-    const fetchPokemon = async () => {
-      const pokemons: Pokemon[] = await getPokemonObjects(151);
-      setPokemonData(pokemons);
-    };
-    if (pokemonData.length === 0) fetchPokemon();
-    if (selectedPokemon === null) setSelectedPokemon(pokemonData[0]);
-  }, []);
+  const hiddenColumns = useHiddenColumns()[0];
+  const pokemonData = useContext(PokemonDataContext).pokemonData;
+  const selectedPokemon = useContext(SelectedPokemonContext).selectedPokemon;
 
   const optionCols = ["Height", "Weight", "Types", "Picture"];
 
@@ -34,7 +27,7 @@ export default function Home() {
           })}
         </div>
         <div className="h-96 border rounded-l-xl overflow-y-auto">
-          <table className="bg-background2">
+          <table className="bg-background2 w-full">
             <thead className="bg-background2-shade">
               <tr>
                 <th className="p-2">id</th>

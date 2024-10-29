@@ -1,14 +1,15 @@
 "use client";
 
 import { useContext } from "react";
-import { type Pokemon } from "../functions/data-fetching";
-import { ColsContext, SelectedPokemonContext } from "../Providers";
+import { type Pokemon } from "../../functions/data-fetching";
+import { SelectedPokemonContext } from "../functional/Providers";
+import { useHiddenColumns } from "../../functions/useHiddenColumns";
 type TableRowProps = {
   pokemon: Pokemon;
 };
 
 export default function PokemonTableRow({ pokemon }: TableRowProps) {
-  const hiddenColumns = useContext(ColsContext).hiddenColumns;
+  const hiddenColumns = useHiddenColumns()[0];
   const { selectedPokemon, setSelectedPokemon } = useContext(
     SelectedPokemonContext
   );

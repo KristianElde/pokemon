@@ -1,14 +1,14 @@
 "use client";
 
 import { useContext } from "react";
-import { ColsContext } from "../Providers";
+import { useHiddenColumns } from "../../functions/useHiddenColumns";
 
 interface props {
   colName: string;
 }
 
 export default function Checkbox({ colName }: props) {
-  const { hiddenColumns, toggleCol } = useContext(ColsContext);
+  const [hiddenColumns, toggleCol] = useHiddenColumns();
   return (
     <button
       onClick={() => {

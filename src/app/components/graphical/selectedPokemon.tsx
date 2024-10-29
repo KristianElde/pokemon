@@ -1,4 +1,4 @@
-import { Pokemon } from "../functions/data-fetching";
+import { Pokemon } from "../../functions/data-fetching";
 
 interface Props {
   pokemon: Pokemon;
