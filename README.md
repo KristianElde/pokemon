@@ -1,15 +1,19 @@
 # Pokemon app
 
-### Check out project on [pocketmonsters.fly.dev/](https://pocketmonsters.fly.dev/)
+## Check out the project online (hosted with fly.io)
 
-### Or clone the project and check it out locally
+### [pocketmonsters.fly.dev/](https://pocketmonsters.fly.dev/)
 
-#### Dependencies
+## Or clone the project and check it out locally
+
+### Dependencies
 
 - Node
+  - I use v22.8.0, but does probably work for older versions as well.
 - Pnpm
+  - Or another package manager
 
-#### Follow these steps
+### Execute these commands in terminal
 
 `git clone https://github.com/KristianElde/pokemon.git`
 
@@ -19,4 +23,4 @@
 
 `pnpm dev`
 
-Check out on localhost:3000
+Check out on `localhost:3000`
