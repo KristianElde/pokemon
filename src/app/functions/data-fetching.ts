@@ -22,8 +22,8 @@ export async function getPokemonObjects(n: number): Promise<Pokemon[]> {
 
   const pokemons: Pokemon[] = await Promise.all(
     urls.map(async (url) => {
-      let pokemonData: Response = await fetch(url);
-      let PokemonJson: any = await pokemonData.json();
+      const pokemonData: Response = await fetch(url);
+      const PokemonJson: any = await pokemonData.json();
 
       return {
         id: PokemonJson.id,
@@ -48,14 +48,14 @@ export async function getPokemonObjects(n: number): Promise<Pokemon[]> {
   return pokemons;
 }
 
-export async function getTypeSprites() {
-  const data: Response = await fetch("https://pokeapi.co/api/v2/type/");
-  const json: any = await data.json();
-  const urls: string[] = json.results.map((type: any) => type.url);
-  const types = await Promise.all(
-    urls.map(async (url) => {
-      let typeData = await fetch(url);
-      let type;
-    })
-  );
-}
+// export async function getTypeSprites() {
+//   const data: Response = await fetch("https://pokeapi.co/api/v2/type/");
+//   const json: any = await data.json();
+//   const urls: string[] = json.results.map((type: any) => type.url);
+//   const types = await Promise.all(
+//     urls.map(async (url) => {
+//       let typeData = await fetch(url);
+//       let type;
+//     })
+//   );
+// }

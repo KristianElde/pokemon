@@ -1,4 +1,3 @@
-import { Stats } from "fs";
 import { Pokemon } from "../functions/data-fetching";
 
 interface Props {
@@ -21,9 +20,9 @@ export default function SelectedPokemon({ pokemon }: Props) {
       <h1 className="text-center py-6">{pokemon.name}</h1>
       <div className="flex flex-row space-x-3">
         <ul className="w-full">
-          {stats.slice(0, 4).map((stat) => {
+          {stats.slice(0, 4).map((stat, i) => {
             return (
-              <li className="flex flex-row justify-between">
+              <li key={i} className="flex flex-row justify-between">
                 <div>{stat.title}</div>
                 <div>{stat.value}</div>
               </li>
@@ -32,9 +31,9 @@ export default function SelectedPokemon({ pokemon }: Props) {
         </ul>
         <div className="bg-background w-1"></div>
         <ul className="w-full">
-          {stats.slice(4).map((stat) => {
+          {stats.slice(4).map((stat, i) => {
             return (
-              <li className="flex flex-row justify-between">
+              <li key={i} className="flex flex-row justify-between">
                 <div>{stat.value}</div>
                 <div>{stat.title}</div>
               </li>
@@ -47,7 +46,7 @@ export default function SelectedPokemon({ pokemon }: Props) {
       </div>
       <ul className="flex flex-row justify-center w-full space-x-10">
         {pokemon.types.map((type) => {
-          return <li>{type}</li>;
+          return <li key={type}>{type}</li>;
         })}
       </ul>
     </div>

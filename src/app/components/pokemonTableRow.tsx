@@ -8,7 +8,7 @@ type TableRowProps = {
 };
 
 export default function PokemonTableRow({ pokemon }: TableRowProps) {
-  const { hiddenColumns, toggleCol } = useContext(ColsContext);
+  const hiddenColumns = useContext(ColsContext).hiddenColumns;
   const { selectedPokemon, setSelectedPokemon } = useContext(
     SelectedPokemonContext
   );

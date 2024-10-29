@@ -23,7 +23,10 @@ export const ColsContext = createContext<ColsContextType>({
 });
 
 export const SelectedPokemonContext = createContext<SelectedPokemonContextType>(
-  { selectedPokemon: null, setSelectedPokemon: (pokemon: Pokemon) => {} }
+  {
+    selectedPokemon: null,
+    setSelectedPokemon: () => {},
+  }
 );
 
 export const Providers: React.FC<ProvidersProps> = ({ children }) => {
@@ -35,6 +38,7 @@ export const Providers: React.FC<ProvidersProps> = ({ children }) => {
       ? setHiddenColumns(hiddenColumns.filter((e) => e !== colName))
       : setHiddenColumns([...hiddenColumns, colName]);
   };
+
   return (
     <ColsContext.Provider value={{ hiddenColumns, toggleCol }}>
       <SelectedPokemonContext.Provider

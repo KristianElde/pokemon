@@ -9,7 +9,7 @@ import SelectedPokemon from "./components/selectedPokemon";
 
 export default function Home() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
-  const { hiddenColumns, toggleCol } = useContext(ColsContext);
+  const hiddenColumns = useContext(ColsContext).hiddenColumns;
   const { selectedPokemon, setSelectedPokemon } = useContext(
     SelectedPokemonContext
   );
