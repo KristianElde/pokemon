@@ -48,14 +48,22 @@ export async function getPokemonObjects(n: number): Promise<Pokemon[]> {
   return pokemons;
 }
 
-// export async function getTypeSprites() {
-//   const data: Response = await fetch("https://pokeapi.co/api/v2/type/");
-//   const json: any = await data.json();
-//   const urls: string[] = json.results.map((type: any) => type.url);
-//   const types = await Promise.all(
-//     urls.map(async (url) => {
-//       let typeData = await fetch(url);
-//       let type;
-//     })
-//   );
-// }
+export async function getTypeSprites() {
+  const data: Response = await fetch("https://pokeapi.co/api/v2/type/");
+  const json: any = await data.json();
+  const urls: string[] = json.results.map((type: any) => type.url);
+  const types: Map<string, string> = new Map();
+  await Promise.all(
+    urls.map(async (url) => {
+      const typeData = await fetch(url);
+      const typeJson = await typeData.json();
+
+      types.set(
+        typeJson.name,
+        typeJson.sprites["generation-viii"]["sword-shield"].name_icon
+      );
+    })
+  );
+  console.log(types);
+  return types;
+}

@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Pokemon } from "../../functions/data-fetching";
+import { TypeSpritesContext } from "../functional/Providers";
 
 interface Props {
   pokemon: Pokemon;
@@ -15,6 +17,9 @@ export default function SelectedPokemon({ pokemon }: Props) {
     { title: "Defense", value: pokemon.defense },
     { title: "Special defense", value: pokemon.specialDefense },
   ];
+
+  const typeSprites: Map<string, string> =
+    useContext(TypeSpritesContext).typeSprites;
   return (
     <div className="flex flex-col mx-5">
       <h1 className="text-center py-6">{pokemon.name}</h1>
@@ -44,9 +49,14 @@ export default function SelectedPokemon({ pokemon }: Props) {
       <div className="flex flex-col items-center">
         <img src={pokemon.picture} alt={`Picture of ${pokemon.name}`} />
       </div>
-      <ul className="flex flex-row justify-center w-full space-x-10">
+      <ul className="flex flex-row justify-center w-full space-x-5">
         {pokemon.types.map((type) => {
-          return <li key={type}>{type}</li>;
+          const url = typeSprites.get(type);
+          return (
+            <li key={type} className="w-20">
+              <img src={url} alt="" />
+            </li>
+          );
         })}
       </ul>
     </div>
