@@ -1,7 +1,8 @@
 export type Pokemon = {
   id: number;
   name: string;
-  picture: string;
+  pictureFront: string;
+  pictureBack: string;
   weight: string;
   height: string;
   types: string[];
@@ -29,7 +30,8 @@ export async function getPokemonObjects(n: number): Promise<Pokemon[]> {
         id: PokemonJson.id,
         name:
           PokemonJson.name.charAt(0).toUpperCase() + PokemonJson.name.slice(1),
-        picture: PokemonJson.sprites.front_default,
+        pictureFront: PokemonJson.sprites.front_default,
+        pictureBack: PokemonJson.sprites.back_default,
         weight: PokemonJson.weight,
         height: PokemonJson.height,
         types: PokemonJson.types.map((type: any) => {

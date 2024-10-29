@@ -39,7 +39,7 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
       <td
         className={`p-2 ${hiddenColumns.includes("Picture") ? "hidden" : ""}`}
       >
-        <img src={pokemon.picture} alt={`Picture of ${pokemon.name}`} />
+        <img src={pokemon.pictureFront} alt={`Picture of ${pokemon.name}`} />
       </td>
     </tr>
   );

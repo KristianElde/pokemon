@@ -21,7 +21,7 @@ export default function SelectedPokemon({ pokemon }: Props) {
   const typeSprites: Map<string, string> =
     useContext(TypeSpritesContext).typeSprites;
   return (
-    <div className="flex flex-col mx-5">
+    <div className="flex flex-col mx-5 ">
       <h1 className="text-center py-6">{pokemon.name}</h1>
       <div className="flex flex-row space-x-3">
         <ul className="w-full">
@@ -46,8 +46,17 @@ export default function SelectedPokemon({ pokemon }: Props) {
           })}
         </ul>
       </div>
-      <div className="flex flex-col items-center">
-        <img src={pokemon.picture} alt={`Picture of ${pokemon.name}`} />
+      <div className="flex flex-col items-center h-40 relative group">
+        <img
+          className="h-full absolute opacity-100 group-hover:opacity-0"
+          src={pokemon.pictureFront}
+          alt={`Picture of ${pokemon.name}`}
+        />
+        <img
+          className="h-full absolute opacity-0 group-hover:opacity-100"
+          src={pokemon.pictureBack}
+          alt={`Picture of ${pokemon.name}`}
+        />
       </div>
       <ul className="flex flex-row justify-center w-full space-x-5">
         {pokemon.types.map((type) => {
