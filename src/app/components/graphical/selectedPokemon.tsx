@@ -11,7 +11,7 @@ export default function SelectedPokemon({ pokemon }: Props) {
     { title: "Height", value: pokemon.height },
     { title: "HP", value: pokemon.hp },
     { title: "Attack", value: pokemon.attack },
-    { title: "Spec Att", value: pokemon.specialAttack },
+    { title: "Spec. Att", value: pokemon.specialAttack },
     { title: "Weight", value: pokemon.weight },
     { title: "Speed", value: pokemon.speed },
     { title: "Defense", value: pokemon.defense },

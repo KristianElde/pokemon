@@ -25,8 +25,8 @@ export default function Home() {
             return <Checkbox key={i} colName={col} />;
           })}
         </div>
-        <div className="h-64 md:h-96 w-96 md:w-auto border rounded-t-xl md:rounded-tr-none md:rounded-l-xl  overflow-y-auto">
-          <table className="bg-background2 w-full table table-row:h-8">
+        <div className="h-80 md:h-96 w-96 md:w-auto border rounded-t-xl md:rounded-tr-none md:rounded-l-xl  overflow-y-auto">
+          <table className="bg-background2 w-full">
             <thead className="bg-background2-shade">
               <tr>
                 <th className="p-2">id</th>
@@ -53,7 +53,7 @@ export default function Home() {
           </table>
         </div>
       </div>
-      <div className=" md:mt-14 h-64 md:h-96 w-96 min-w-80 border rounded-b-xl md:rounded-r-xl md:rounded-b-none bg-selected">
+      <div className=" md:mt-14 h-96 md:h-96 w-96 min-w-80 border rounded-b-xl md:rounded-r-xl md:rounded-b-none bg-selected">
         {selectedPokemon != null ? (
           <SelectedPokemon pokemon={selectedPokemon}></SelectedPokemon>
         ) : (
