@@ -25,9 +25,9 @@ export default function Home() {
             return <Checkbox key={i} colName={col} />;
           })}
         </div>
-        <div className="h-80 md:h-96 w-96 md:w-auto border rounded-t-xl md:rounded-tr-none md:rounded-l-xl  overflow-y-auto">
+        <div className="h-80 md:h-96 w-96 md:w-auto border rounded-t-xl md:rounded-tr-none md:rounded-l-xl overflow-y-auto">
           <table className="bg-background2 w-full">
-            <thead className="bg-background2-shade">
+            <thead className="bg-background2-shade sticky top-0 z-10">
               <tr>
                 <th className="p-2">id</th>
                 <th className="p-2">Name</th>
