@@ -19,7 +19,11 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
       onClick={() => {
         setSelectedPokemon(pokemon);
       }}
-      className={` ${pokemon === selectedPokemon ? "bg-selected" : ""}`}
+      className={`${
+        pokemon === selectedPokemon
+          ? "bg-selected"
+          : "odd:bg-background2 even:bg-background2-alt"
+      } `}
     >
       <td className="p-2">{pokemon.id}</td>
       <td className="p-2">{pokemon.name}</td>

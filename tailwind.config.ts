@@ -13,6 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         background2: {
           DEFAULT: "var(--background2)",
+          alt: "var(--background2-alt)",
           shade: "var(--background2-shade)",
         },
         selected: "var(--selected)",

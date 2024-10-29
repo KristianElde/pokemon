@@ -18,15 +18,15 @@ export default function Home() {
   const optionCols = ["Height", "Weight", "Types", "Picture"];
 
   return (
-    <div className="flex flex-col justify-center sm:flex-row">
+    <div className="flex flex-col justify-center md:flex-row">
       <div>
         <div className="flex flex-row space-x-5 h-14">
           {optionCols.map((col, i) => {
             return <Checkbox key={i} colName={col} />;
           })}
         </div>
-        <div className="h-64 sm:h-96 w-96 sm:w-auto border rounded-t-xl sm:rounded-tr-none sm:rounded-l-xl  overflow-y-auto">
-          <table className="bg-background2 w-full">
+        <div className="h-64 md:h-96 w-96 md:w-auto border rounded-t-xl md:rounded-tr-none md:rounded-l-xl  overflow-y-auto">
+          <table className="bg-background2 w-full table table-row:h-8">
             <thead className="bg-background2-shade">
               <tr>
                 <th className="p-2">id</th>
@@ -53,7 +53,7 @@ export default function Home() {
           </table>
         </div>
       </div>
-      <div className=" sm:mt-14 h-64 sm:h-96 w-96 border rounded-b-xl sm:rounded-r-xl sm:rounded-b-none bg-selected">
+      <div className=" md:mt-14 h-64 md:h-96 w-96 min-w-80 border rounded-b-xl md:rounded-r-xl md:rounded-b-none bg-selected">
         {selectedPokemon != null ? (
           <SelectedPokemon pokemon={selectedPokemon}></SelectedPokemon>
         ) : (
