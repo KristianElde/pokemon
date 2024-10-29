@@ -11,6 +11,12 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        background2: {
+          DEFAULT: "var(--background2)",
+          shade: "var(--background2-shade)",
+        },
+        selected: "var(--selected)",
+        defaultBorder: "var(--border)",
       },
     },
   },
