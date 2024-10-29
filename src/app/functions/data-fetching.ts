@@ -46,7 +46,7 @@ export async function getPokemonObjects(n: number): Promise<Pokemon[]> {
       };
     })
   );
-  console.log("FETCH COMPLETE");
+
   return pokemons;
 }
 
@@ -66,6 +66,6 @@ export async function getTypeSprites() {
       );
     })
   );
-  console.log(types);
+
   return types;
 }

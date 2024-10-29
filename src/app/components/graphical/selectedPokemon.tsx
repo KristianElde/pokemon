@@ -1,3 +1,5 @@
+"use client";
+
 import { useContext } from "react";
 import { Pokemon } from "../../functions/data-fetching";
 import { TypeSpritesContext } from "../functional/Providers";

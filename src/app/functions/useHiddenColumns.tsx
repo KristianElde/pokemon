@@ -1,4 +1,5 @@
 "use client";
+
 import { useLocalStorageState } from "ahooks";
 
 export const useHiddenColumns = () => {
@@ -15,8 +16,8 @@ export const useHiddenColumns = () => {
       hiddenColumns.includes(colName)
         ? setHiddenColumns(hiddenColumns.filter((e) => e !== colName))
         : setHiddenColumns([...hiddenColumns, colName]);
-    } else setHiddenColumns([colName]);
+    }
   };
 
-  return [hiddenColumns ?? [], toggleCol] as const;
+  return [hiddenColumns, toggleCol] as const;
 };

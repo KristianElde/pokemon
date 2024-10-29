@@ -1,6 +1,5 @@
 "use client";
 
-import Checkbox from "./components/graphical/checkbox";
 import PokemonTableRow from "./components/graphical/pokemonTableRow";
 import { useContext } from "react";
 import {
@@ -9,6 +8,7 @@ import {
 } from "./components/functional/Providers";
 import SelectedPokemon from "./components/graphical/selectedPokemon";
 import { useHiddenColumns } from "./functions/useHiddenColumns";
+import TableColumnSelection from "./components/graphical/tableColumnSelection";
 
 export default function Home() {
   const hiddenColumns = useHiddenColumns()[0];
@@ -17,14 +17,12 @@ export default function Home() {
 
   const optionCols = ["Height", "Weight", "Types", "Picture"];
 
+  console.log("Page", hiddenColumns);
+
   return (
     <div className="flex flex-col justify-center md:flex-row">
       <div>
-        <div className="flex flex-row space-x-5 h-14">
-          {optionCols.map((col, i) => {
-            return <Checkbox key={i} colName={col} />;
-          })}
-        </div>
+        <TableColumnSelection optionalColumns={optionCols} />
         <div className="h-80 md:h-96 w-96 md:w-auto border rounded-t-xl md:rounded-tr-none md:rounded-l-xl overflow-y-auto">
           <table className="bg-background2 w-full">
             <thead className="bg-background2-shade sticky top-0 z-10">
@@ -36,7 +34,7 @@ export default function Home() {
                     <th
                       key={col}
                       className={`p-2 ${
-                        hiddenColumns.includes(col) ? "hidden" : ""
+                        hiddenColumns?.includes(col) ? "hidden" : ""
                       }`}
                     >
                       {col}
@@ -45,7 +43,7 @@ export default function Home() {
                 })}
               </tr>
             </thead>
-            <tbody className="">
+            <tbody>
               {pokemonData.map((pokemon) => {
                 return <PokemonTableRow key={pokemon.id} pokemon={pokemon} />;
               })}

@@ -6,6 +6,7 @@ import {
   getTypeSprites,
   Pokemon,
 } from "../../functions/data-fetching";
+import { useHiddenColumns } from "@/app/functions/useHiddenColumns";
 
 interface ProvidersProps {
   children: ReactNode;

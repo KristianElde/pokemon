@@ -19,7 +19,7 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
       onClick={() => {
         setSelectedPokemon(pokemon);
       }}
-      className={`h-20 ${
+      className={`h-20 text-center ${
         pokemon === selectedPokemon
           ? "bg-selected"
           : "odd:bg-background2 even:bg-background2-alt"
@@ -27,20 +27,20 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
     >
       <td>{pokemon.id}</td>
       <td>{pokemon.name}</td>
-      <td className={`${hiddenColumns.includes("Weight") ? "hidden" : ""}`}>
+      <td className={`${hiddenColumns?.includes("Weight") ? "hidden" : ""}`}>
         {pokemon.weight}
       </td>
-      <td className={` ${hiddenColumns.includes("Height") ? "hidden" : ""}`}>
+      <td className={` ${hiddenColumns?.includes("Height") ? "hidden" : ""}`}>
         {pokemon.height}
       </td>
-      <td className={` ${hiddenColumns.includes("Types") ? "hidden" : ""}`}>
+      <td className={` ${hiddenColumns?.includes("Types") ? "hidden" : ""}`}>
         <ul>
           {pokemon.types.map((type, i) => {
             return <li key={i}>{type}</li>;
           })}
         </ul>
       </td>
-      <td className={`${hiddenColumns.includes("Picture") ? "hidden" : ""}`}>
+      <td className={`${hiddenColumns?.includes("Picture") ? "hidden" : ""}`}>
         <img src={pokemon.pictureFront} alt={`Picture of ${pokemon.name}`} />
       </td>
     </tr>
