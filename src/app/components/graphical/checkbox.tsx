@@ -9,11 +9,11 @@ interface props {
 export default function Checkbox({ colName }: props) {
   const [hiddenColumns, toggleCol] = useHiddenColumns();
 
-  console.log(colName, hiddenColumns?.includes(colName));
   return (
     <button
       onClick={() => {
         toggleCol(colName);
+        location.reload();
       }}
       className={`p-2 my-2 rounded-full ${
         hiddenColumns?.includes(colName)
