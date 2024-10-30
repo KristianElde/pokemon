@@ -16,6 +16,7 @@ export default function KeyListener() {
         if (event.key === "ArrowUp") {
           const newSelectedPokemon =
             selectedPokemon === 1 ? selectedPokemon : selectedPokemon - 1;
+
           setSelectedPokemon(newSelectedPokemon);
         }
         if (event.key === "ArrowDown") {
@@ -23,6 +24,7 @@ export default function KeyListener() {
             selectedPokemon === pokemonData.length
               ? selectedPokemon
               : selectedPokemon + 1;
+
           setSelectedPokemon(newSelectedPokemon);
         }
       }

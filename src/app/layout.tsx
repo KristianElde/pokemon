@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./components/functional/Providers";
 import KeyListener from "./components/functional/keyListener";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Suspense } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,8 +34,10 @@ export default function RootLayout({
       >
         <NuqsAdapter>
           <Providers>
-            <KeyListener />
-            {children}
+            <Suspense>
+              <KeyListener />
+              {children}
+            </Suspense>
           </Providers>
         </NuqsAdapter>
       </body>
