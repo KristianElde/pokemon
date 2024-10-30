@@ -1,20 +1,21 @@
 "use client";
 
 import PokemonTableRow from "./components/graphical/pokemonTableRow";
-import { useContext, useEffect } from "react";
-import {
-  PokemonDataContext,
-  SelectedPokemonContext,
-} from "./components/functional/Providers";
+import { useContext } from "react";
+import { PokemonDataContext } from "./components/functional/Providers";
 import SelectedPokemon from "./components/graphical/selectedPokemon";
 import { useHiddenColumns } from "./functions/useHiddenColumns";
 import TableColumnSelection from "./components/graphical/tableColumnSelection";
+import { parseAsInteger, useQueryState } from "nuqs";
 
 export default function Home() {
   const pokemonData = useContext(PokemonDataContext).pokemonData;
-  const selectedPokemon = useContext(SelectedPokemonContext).selectedPokemon;
-  const [getCol, _] = useHiddenColumns();
-
+  const [getCol] = useHiddenColumns();
+  const [selectedPokemonIdx] = useQueryState(
+    "selectedId",
+    parseAsInteger.withDefault(1)
+  );
+  const selectedPokemon = pokemonData.at(selectedPokemonIdx - 1);
   const optionCols = ["Height", "Weight", "Types", "Picture"];
 
   return (
@@ -48,7 +49,7 @@ export default function Home() {
         </div>
       </div>
       <div className=" md:mt-14 h-96 md:h-96 w-96 min-w-80 border rounded-b-xl md:rounded-r-xl md:rounded-b-none bg-selected">
-        {selectedPokemon != null ? (
+        {selectedPokemon ? (
           <SelectedPokemon pokemon={selectedPokemon}></SelectedPokemon>
         ) : (
           <h2 className="pt-36 text-center">

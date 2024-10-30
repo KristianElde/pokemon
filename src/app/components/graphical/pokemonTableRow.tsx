@@ -2,19 +2,17 @@
 
 import { useContext } from "react";
 import { type Pokemon } from "../../functions/data-fetching";
-import {
-  SelectedPokemonContext,
-  TypeSpritesContext,
-} from "../functional/Providers";
-import { parseAsBoolean, useQueryStates } from "nuqs";
+import { TypeSpritesContext } from "../functional/Providers";
 import { useHiddenColumns } from "@/app/functions/useHiddenColumns";
+import { parseAsInteger, useQueryState } from "nuqs";
 type TableRowProps = {
   pokemon: Pokemon;
 };
 
 export default function PokemonTableRow({ pokemon }: TableRowProps) {
-  const { selectedPokemon, setSelectedPokemon } = useContext(
-    SelectedPokemonContext
+  const [selectedPokemonIdx, setSelectedPokemon] = useQueryState(
+    "selectedId",
+    parseAsInteger.withDefault(1)
   );
   const typeSprites = useContext(TypeSpritesContext).typeSprites;
 
@@ -23,10 +21,10 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
   return (
     <tr
       onClick={() => {
-        setSelectedPokemon(pokemon);
+        setSelectedPokemon(pokemon.id);
       }}
       className={`h-20 text-center ${
-        pokemon === selectedPokemon
+        pokemon.id === selectedPokemonIdx
           ? "bg-selected"
           : "odd:bg-background2 even:bg-background2-alt"
       }`}

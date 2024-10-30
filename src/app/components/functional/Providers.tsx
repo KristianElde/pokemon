@@ -21,18 +21,6 @@ export const PokemonDataContext = createContext<PokemonDataContextType>({
   setPokemonData: () => {},
 });
 
-interface SelectedPokemonContextType {
-  selectedPokemon: Pokemon | null;
-  setSelectedPokemon: (pokemon: Pokemon) => void;
-}
-
-export const SelectedPokemonContext = createContext<SelectedPokemonContextType>(
-  {
-    selectedPokemon: null,
-    setSelectedPokemon: () => {},
-  }
-);
-
 interface TypeSPritesContextType {
   typeSprites: Map<string, string>;
   setTypeSprites: (pokemon: Map<string, string>) => void;
@@ -68,13 +56,9 @@ export const Providers: React.FC<ProvidersProps> = ({ children }) => {
 
   return (
     <PokemonDataContext.Provider value={{ pokemonData, setPokemonData }}>
-      <SelectedPokemonContext.Provider
-        value={{ selectedPokemon, setSelectedPokemon }}
-      >
-        <TypeSpritesContext.Provider value={{ typeSprites, setTypeSprites }}>
-          {children}
-        </TypeSpritesContext.Provider>
-      </SelectedPokemonContext.Provider>
+      <TypeSpritesContext.Provider value={{ typeSprites, setTypeSprites }}>
+        {children}
+      </TypeSpritesContext.Provider>
     </PokemonDataContext.Provider>
   );
 };

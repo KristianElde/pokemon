@@ -1,29 +1,29 @@
 "use client";
 
 import { useContext, useEffect } from "react";
-import { PokemonDataContext, SelectedPokemonContext } from "./Providers";
+import { PokemonDataContext } from "./Providers";
+import { parseAsInteger, useQueryState } from "nuqs";
 
 export default function KeyListener() {
-  const { selectedPokemon, setSelectedPokemon } = useContext(
-    SelectedPokemonContext
+  const [selectedPokemon, setSelectedPokemon] = useQueryState(
+    "selectedId",
+    parseAsInteger.withDefault(1)
   );
   const pokemonData = useContext(PokemonDataContext).pokemonData;
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (selectedPokemon) {
         if (event.key === "ArrowUp") {
-          const currentId = selectedPokemon.id;
           const newSelectedPokemon =
-            currentId === 1 ? selectedPokemon : pokemonData.at(currentId - 2);
-          setSelectedPokemon(newSelectedPokemon ?? selectedPokemon);
+            selectedPokemon === 1 ? selectedPokemon : selectedPokemon - 1;
+          setSelectedPokemon(newSelectedPokemon);
         }
         if (event.key === "ArrowDown") {
-          const currentId = selectedPokemon.id;
           const newSelectedPokemon =
-            currentId === pokemonData.length
+            selectedPokemon === pokemonData.length
               ? selectedPokemon
-              : pokemonData.at(currentId);
-          setSelectedPokemon(newSelectedPokemon ?? selectedPokemon);
+              : selectedPokemon + 1;
+          setSelectedPokemon(newSelectedPokemon);
         }
       }
     };
