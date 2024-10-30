@@ -11,16 +11,27 @@
 - Node
   - I use v22.8.0, but does probably work for older versions as well.
 - Pnpm
-  - Or another package manager
+
+```bash
+npm i -g pnpm
+```
 
 ### Execute these commands in terminal
 
-`git clone https://github.com/KristianElde/pokemon.git`
+```bash
+git clone https://github.com/KristianElde/pokemon.git
+```
 
-`cd pokemon`
+```bash
+cd pokemon
+```
 
-`pnpm i`
+```bash
+pnpm i
+```
 
-`pnpm dev`
+```bash
+pnpm dev
+```
 
-Check out on `localhost:3000`
+Check out the project on `localhost:3000`
