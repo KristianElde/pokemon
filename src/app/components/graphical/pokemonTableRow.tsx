@@ -6,17 +6,19 @@ import {
   SelectedPokemonContext,
   TypeSpritesContext,
 } from "../functional/Providers";
-import { useHiddenColumns } from "../../functions/useHiddenColumns";
+import { parseAsBoolean, useQueryStates } from "nuqs";
+import { useHiddenColumns } from "@/app/functions/useHiddenColumns";
 type TableRowProps = {
   pokemon: Pokemon;
 };
 
 export default function PokemonTableRow({ pokemon }: TableRowProps) {
-  const hiddenColumns = useHiddenColumns()[0];
   const { selectedPokemon, setSelectedPokemon } = useContext(
     SelectedPokemonContext
   );
   const typeSprites = useContext(TypeSpritesContext).typeSprites;
+
+  const [getCol] = useHiddenColumns();
 
   return (
     <tr
@@ -31,13 +33,13 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
     >
       <td>{pokemon.id}</td>
       <td>{pokemon.name}</td>
-      <td className={`${hiddenColumns?.includes("Weight") ? "hidden" : ""}`}>
+      <td className={`${getCol("Weight") ? "hidden" : ""}`}>
         {pokemon.weight}
       </td>
-      <td className={`${hiddenColumns?.includes("Height") ? "hidden" : ""}`}>
+      <td className={`${getCol("Height") ? "hidden" : ""}`}>
         {pokemon.height}
       </td>
-      <td className={`${hiddenColumns?.includes("Types") ? "hidden" : ""}`}>
+      <td className={`${getCol("Types") ? "hidden" : ""}`}>
         <ul className="space-y-1">
           {pokemon.types.map((type) => {
             const url = typeSprites.get(type);
@@ -49,7 +51,7 @@ export default function PokemonTableRow({ pokemon }: TableRowProps) {
           })}
         </ul>
       </td>
-      <td className={`${hiddenColumns?.includes("Picture") ? "hidden" : ""}`}>
+      <td className={`${getCol("Picture") ? "hidden" : ""}`}>
         <img src={pokemon.pictureFront} alt={`Picture of ${pokemon.name}`} />
       </td>
     </tr>

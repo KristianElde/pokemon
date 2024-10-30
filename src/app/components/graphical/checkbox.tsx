@@ -7,18 +7,15 @@ interface props {
 }
 
 export default function Checkbox({ colName }: props) {
-  const [hiddenColumns, toggleCol] = useHiddenColumns();
+  const [getCol, setCol] = useHiddenColumns();
 
   return (
     <button
       onClick={() => {
-        toggleCol(colName);
-        location.reload();
+        setCol(colName);
       }}
       className={`p-2 my-2 rounded-full ${
-        hiddenColumns?.includes(colName)
-          ? "bg-background2"
-          : "bg-background2-shade"
+        getCol(colName) ? "bg-background2" : "bg-background2-shade"
       }`}
     >
       {colName}

@@ -11,13 +11,11 @@ import { useHiddenColumns } from "./functions/useHiddenColumns";
 import TableColumnSelection from "./components/graphical/tableColumnSelection";
 
 export default function Home() {
-  const [hiddenColumns] = useHiddenColumns();
   const pokemonData = useContext(PokemonDataContext).pokemonData;
   const selectedPokemon = useContext(SelectedPokemonContext).selectedPokemon;
+  const [getCol, _] = useHiddenColumns();
 
   const optionCols = ["Height", "Weight", "Types", "Picture"];
-
-  useEffect(() => {}, [hiddenColumns]);
 
   return (
     <div className="flex flex-col justify-center md:flex-row">
@@ -33,9 +31,7 @@ export default function Home() {
                   return (
                     <th
                       key={col}
-                      className={`p-2 ${
-                        hiddenColumns?.includes(col) ? "hidden" : ""
-                      }`}
+                      className={`p-2 ${getCol(col) ? "hidden" : ""}`}
                     >
                       {col}
                     </th>

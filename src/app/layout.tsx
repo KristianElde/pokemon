@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./components/functional/Providers";
 import KeyListener from "./components/functional/keyListener";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,10 +31,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased m-20`}
       >
-        <Providers>
-          <KeyListener />
-          {children}
-        </Providers>
+        <NuqsAdapter>
+          <Providers>
+            <KeyListener />
+            {children}
+          </Providers>
+        </NuqsAdapter>
       </body>
     </html>
   );
